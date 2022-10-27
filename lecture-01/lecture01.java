@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class lecture01 {
     /*
     * comment
@@ -43,6 +45,28 @@ public class lecture01 {
         System.out.println();
 
         toBitOperations();
+        System.out.println();
+
+        arrays();
+        System.out.println();
+
+        matrixes();
+        System.out.println();
+
+        converting();
+        System.out.println();
+
+        dataFromTerminal();
+        System.out.println();
+
+        formatStrings();
+        System.out.println();
+
+        visiblity();
+        System.out.println();
+
+        functions();
+        System.out.println();
     }
     
     public static void typeInt() {
@@ -92,7 +116,6 @@ public class lecture01 {
         String s = null; // - так можно, это пустая ссылка
         String msg = "Hello, World!";
         System.out.println(msg);
-
     }
 
     public static void typeImplicit() {
@@ -108,7 +131,6 @@ public class lecture01 {
         System.out.println(d); // 1022
         // d = "mistake";
         // Type mismatch: cannot convert from String to double
-        
     }
 
     static String getType(Object o) {
@@ -221,10 +243,162 @@ public class lecture01 {
         i = s.length() >= 5 & s.charAt(4) == '1'; // true && true
         System.out.println(i); // true
 
-        s = "qww1"; // длина 4, 0..3
-        i = s.length() >= 5 & s.charAt(4) == '1'; // false && false
-        System.out.println(i); // Exception
-        
+        //s = "qww1"; // длина 4, 0..3
+        //i = s.length() >= 5 & s.charAt(4) == '1'; // false && false
+        //System.out.println(i); // Exception
+    }
 
+    public static void arrays() {
+        // Массивы
+        System.out.println("Arrays.");
+        int[] arr = new int[10];
+        System.out.println(arr.length); // 10
+
+        arr = new int[] {1, 2, 3, 4, 5};
+        System.out.println(arr.length); // 5
+        System.out.println(arr[3]); // 4
+
+        arr[3] = 12;
+        System.out.println(arr[3]); // 12
+
+        // На собеседовании могут спросить, а можно так:
+        int brr[];
+    }
+
+    public static void matrixes() {
+        System.out.println("Matrixes.");
+        int[] crr[] = new int[3][5];
+        
+        for(int[] line : crr) {
+            for(int item : line) {
+                System.out.printf("%d", item);
+            }
+            System.out.println();
+        }
+        
+        int[][] arr = new int[3][5];
+
+        for(int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                System.out.printf("%d", arr[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public static void converting() {
+        // Прееобразования
+        System.out.println("Преобразования");
+        int i = 123; double d = i;
+        System.out.println(i); // 123
+        System.out.println(d); // 123.0
+        
+        d = 3.1415; i = (int)d;
+        System.out.println(d); // 3.1415
+        System.out.println(i); // 3
+        
+        d = 3.9415; i = (int)d;
+        System.out.println(d); // 3.9415
+        System.out.println(i); // 3
+
+        byte b = Byte.parseByte("123");
+        System.out.println(b); // 123
+
+        // b = Byte.parseByte("1234");
+        // System.out.println(b); // NumberFormatException: Value out of range - переполнение
+
+        // Ковариантность и контравариантность
+        // int[] a = new int[10];
+        // double[] e = a;     // Изучаем
+    }
+
+    public static void dataFromTerminal() {
+        // Получение данных из терминала
+        System.out.println("Получение данных из терминала");
+        
+        // Scanner iScanner = new Scanner(System.in);  // достаточно 1 раз определить
+        // System.out.printf("name: ");
+        // String name = iScanner.nextLine();
+        // System.out.printf("Привет, %s!", name); // без перехода на нов строку
+        // System.out.printf("Привет, %s!\n", name);
+        // iScanner.close();
+        
+        // Scanner iScanner = new Scanner(System.in);
+        // System.out.printf("int a: ");
+        // int x = iScanner.nextInt();
+        // System.out.printf("double a: ");
+        // double y = iScanner.nextDouble();
+        // System.out.printf("%d + %f = %f", x, y, x + y);
+        // iScanner.close();
+
+        // Scanner iScanner = new Scanner(System.in);
+        // System.out.printf("int a: ");
+        // boolean flag = iScanner.hasNextInt();
+        // System.out.println(flag);
+        // int i = iScanner.nextInt();
+        // System.out.println(i);
+        // iScanner.close();
+    }
+
+    public static void formatStrings() {
+        // Форматированный вывод
+        System.out.println("Форматированный вывод");
+        int a = 1, b = 2;
+        int c = a + b;
+        
+        // Конкратенация
+        String res = a + " + " + b + " = " + c;
+        System.out.println(res);
+        System.out.println();
+
+        // Вопрос на собеседовании
+        String s = "qwe";
+        int d = 123;
+        String q = s + d;
+        System.out.println(q);
+        System.out.println();
+
+        String res2 = String.format("%d + %d = %d \n", a, b, c);
+        System.out.printf("%d + %d = %d \n", a, b, c);
+        System.out.println(res2);
+
+        float pi = 3.1415f;
+        System.out.printf("%f\n", pi);      // 3,141500
+        System.out.printf("%.2f\n", pi);    // 3,14
+        System.out.printf("%.3f\n", pi);    // 3,141
+        System.out.printf("%e\n", pi);      // 3,141500e+00
+        System.out.printf("%.2e\n", pi);    // 3,14e+00
+        System.out.printf("%.3e\n", pi);    // 3,141e+00
+    }
+
+    public static void visiblity() {
+        System.out.println("Область видимости переменных");
+        int b = 111;
+            {
+                int a = 222;
+                System.out.println(a+b); // 333
+            }
+        int a = 123;
+        System.out.println(a);  // 123
+    }
+
+    public static void functions() {
+        System.out.println("Функции (методы)");
+        sayHi();    // hi!
+        System.out.println(sum(1, 3));  // 4
+        System.out.println(factor(5));    // 120.0
+    }
+
+    static void sayHi() {
+        System.out.println("hi!");
+    }
+
+    static int sum(int a, int b) {
+        return a + b;
+    }
+    
+    static double factor(int n) {
+        if(n == 1) return 1;
+        return n * factor(n - 1);
     }
 }
