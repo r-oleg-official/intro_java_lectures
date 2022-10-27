@@ -681,7 +681,81 @@ C Java получение данных из строки терминала по
             System.out.println("hi!");
         }
     }
-1:19:38
+
+Теперь в коде можно подтягивать метод из файла `lib.java`:
+
+    public class program {
+        public static void main(String[] args) {
+            lib.sayHi();
+        }
+    }
+
+> Но торопиться это делать не надо, статика (static) - это плохо.
+
+### Управляющие конструкции.
+
+    int a = 1;
+    int b = 2;
+    int c;
+    if (a > b) {
+        c = a;
+    } else {
+        c = b;
+    }
+    System.out.println(c);
+
+Операторы ветвления похожи на C#. Можно использовать сокр. форму:
+
+    if (a > b) c = a;
+    if (b > a) c = b;
+
+#### Тернарный оператор
+
+    int min = a < b ? a : b;
+    System.out.println(min);
+
+Объяснение. Если `a` меньше `b`, выражение ПРАВДА, то вернется значение после `?` и до `:`, иначе, если выр-е ЛОЖЬ, то вернется справа от `:`.
+
+#### Оператор выбора, `switch`.
+
+    int mounth = value;
+    String text = "";
+    switch (mounth) {
+        case 1:
+            text = "Autumn";
+            break;
+        ...
+        default:
+            text = "mistake";
+            break;
+    }
+    System.out.println(text);
+    iScanner.close();
+
+Каждый `case` должен заканчиваться `break`. Есть необязательный блок `default`, он также должен заканчиваться `break`.
+
+Может быть такая конструкция `switch`:
+
+    int d = 123;
+    switch (d) {
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+            System.out.println("a");
+            break;
+        case 10: 
+            System.out.println("b");
+            break;
+        default:
+            break;
+    }
+
+Объяснение. Выполение кода будет проваливаться по `case'ам` с 1-го до 5-го выполнится команда вывода, дойдя до `break`, закончит выполнять. Если нужного значения ключа не будет, то выполнится код в `case'е` `default`, при наличии. Т.е. при отстуствии `break`, будут выполняться `case'ы` без `break`.
+
+Это может пригодится, если нужно выполнение кода при определенном диапазоне ключей.
+1:25:13
 
 
 

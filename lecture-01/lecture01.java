@@ -67,6 +67,9 @@ public class lecture01 {
 
         functions();
         System.out.println();
+
+        driveBuilding();
+        System.out.println();
     }
     
     public static void typeInt() {
@@ -401,4 +404,58 @@ public class lecture01 {
         if(n == 1) return 1;
         return n * factor(n - 1);
     }
+
+    public static void driveBuilding() {
+        System.out.println("Управляющие конструкции");
+        int a = 1;
+        int b = 2;
+        int c;
+        if (a > b) {
+            c = a;
+        } else {
+            c = b;
+        }
+
+        // Сокр. форма
+        if (a > b) c = a;
+        if (b > a) c = b;
+        System.out.println(c);
+
+        // Тернарный оператор
+        int min = a < b ? a : b;
+        System.out.println(min);
+
+        // Оператор выбора switch.
+        // int mounth = value;
+        // String text = "";
+        // switch (mounth) {
+            // case 1:
+                // text = "Autumn";
+                // break;
+            // ...
+            // default:
+                // text = "mistake";
+                // break;
+        // }
+        // System.out.println(text);
+        // iScanner.close();
+        int d = 123;
+        switch (d) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                System.out.println("a");
+                break;
+            case 10: 
+                System.out.println("b");
+                break;
+            default:
+                break;
+        }
+
+
+    }
+
 }
