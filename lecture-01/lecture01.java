@@ -1,6 +1,5 @@
 import java.util.Scanner;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class lecture01 {
     /*
@@ -556,6 +555,8 @@ public class lecture01 {
 
     public static void workFiles() {
         System.out.println("Работа с файлами");
+
+        // Record to the new file, don't rewrite
         try (FileWriter fw = new FileWriter("file.txt", false)){
             fw.write("line 1");
             fw.append('\n');
@@ -567,6 +568,30 @@ public class lecture01 {
             // TODO: handle exception
             System.out.println(ex.getMessage());
         }
+    }
+
+    public static void readChars() throws Exception {
+        // Read from the file, by chars (посимвольно).
+        FileReader fr = new FileReader("file.txt");
+        int c;
+        while ((c = fr.read()) != -1) {
+            char ch = (char) c;
+            if (ch == '\n') {
+                System.out.print(ch);
+            } else {
+                System.out.print(ch);
+            }
+        }
+    }
+
+    public static void readLines() throws Exception {
+        // Read from th file, by lines. (построчно)
+        BufferedReader br = new BufferedReader(new FileReader("file.txt"));
+        String str;
+        while ((str = br.readLine()) != null) {
+            System.out.printf("== %s ==\n", str);
+        }
+        br.close();
     }
 
 }
