@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class lecture01 {
     /*
@@ -69,6 +71,12 @@ public class lecture01 {
         System.out.println();
 
         driveBuilding();
+        System.out.println();
+
+        circles();
+        System.out.println();
+
+        workFiles();
         System.out.println();
     }
     
@@ -454,8 +462,111 @@ public class lecture01 {
             default:
                 break;
         }
+    }
+    public static void circles() {
+        // Циклы
+        System.out.println("Циклы");
+        
+        // while
+        int value = 321;
+        int count = 0;
+        
+        while (value !=0) {
+            value /= 10;
+            count++;
+        }
+        System.out.println(count);  // 3
 
+        // do while
+        value = 321;
+        count = 0;
 
+        do {
+            value /= 10;
+            count++;
+        } while (value != 0);
+        System.out.println(count);  // 3
+
+        for (int i = 0; i < 10; i++) {
+            if (i % 2  == 0)
+                continue;
+            System.out.println(i);  // 1 3 5 7 9
+        }
+        System.out.println();
+
+        for (int i = 0; i < 10; i++) {
+            if (i % 2  != 0) {
+                break;
+            }
+            System.out.println(i);  // 0
+        }
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 5; j++) {
+                break;  //  break-1
+            }
+            break;  // break-2
+        }
+
+        int s = 0;
+        for (int i = 0; i <= 10; i++) {
+            s += 1;
+        }
+        System.out.println(s);  // 11
+
+        for (int i = 0; i < 5; i++) {
+            for ( int j = 0; j < 5; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+        // * * * * *
+        // * * * * *
+        // * * * * *
+        // * * * * *
+        // * * * * *
+
+        // для коллекций
+        int arr[] = new int[10];
+        for (int item : arr) {
+            System.out.printf("%d ", item);
+        }
+        System.out.println();
+
+        // foreach
+        int[] brr = new int[] {1, 2, 3, 4, 5, 77};
+        for (int item : brr) {
+            System.out.print(item); // 1234577
+        }
+        System.out.println();
+        
+
+        // почему не изменяются эл-ты массива через item
+        int[] crr = new int[] {1, 2, 3, 4, 5, 77};
+        for (int item : crr) {
+            item = 12;
+            System.out.print(item); // 1212121212
+        }
+        System.out.println();
+        for (int item : crr) {
+            System.out.print(item); // 1234577
+        }
+        System.out.println();
+    }
+
+    public static void workFiles() {
+        System.out.println("Работа с файлами");
+        try (FileWriter fw = new FileWriter("file.txt", false)){
+            fw.write("line 1");
+            fw.append('\n');
+            fw.append('2');
+            fw.append('\n');
+            fw.append("line 3");
+            fw.flush();
+        } catch (Exception ex) {
+            // TODO: handle exception
+            System.out.println(ex.getMessage());
+        }
     }
 
 }
